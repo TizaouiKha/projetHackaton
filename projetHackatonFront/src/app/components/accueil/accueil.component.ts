@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Practitioner } from '../../interfaces/practitioner';
+import { Patient } from '../../interfaces/patient';
 import { PatientService } from '../../services/patient/patient.service';
 
 @Pipe({name: "safeHtml" })
@@ -23,13 +23,13 @@ export class SafeHtmlPipe implements PipeTransform{
 })
 
 export class AccueilComponent implements OnInit{
-  practitioners: Practitioner[] = [];
+  patients: Patient[] = [];
   
 
   constructor(private router: Router, private route: ActivatedRoute, private patientService: PatientService) {}
 
   ngOnInit(): void {
-    this.getPractitioners();
+    this.getPatients();
     this.route.params.subscribe(params => {
       const userId = params['userId'];
       console.log('ID de l\'utilisateur:', userId);
@@ -47,10 +47,10 @@ export class AccueilComponent implements OnInit{
 
  
   
-  public getPractitioners(): void{
+  public getPatients(): void{
     this.patientService.getPatients().subscribe(
-      (response: Practitioner[]) => {
-        this.practitioners = response;
+      (response: Patient[]) => {
+        this.patients = response;
       },
       (error:HttpErrorResponse)=>{
         alert(error.message);
@@ -58,10 +58,10 @@ export class AccueilComponent implements OnInit{
     )
   }
 
-  showPracticioners(){
+  showPatients(){
     let result= "";
-    for(let i = 0; i<this.practitioners.length; i++){
-      result += "<p>"+ this.practitioners[i].id+" "+ this.practitioners[i].firstName+ " "+this.practitioners[i].lastName+" " + this.practitioners[i]. createdAt+" " + this.practitioners[i].updatesAt+ + this.practitioners[i].isActive+"</div>";
+    for(let i = 0; i<this.patients.length; i++){
+      result += "<p>"+ this.patients[i].id+" "+ this.patients[i].firstName+ " "+this.patients[i].lastName+" " +" "+this.patients[i].email+" "+this.patients[i].insulinScheme+" "+this.patients[i].diabetesType+ " " + this.patients[i]. createdAt+" " + this.patients[i].updatesAt+ + this.patients[i].isActive+"</div>";
   }
   return result
 }

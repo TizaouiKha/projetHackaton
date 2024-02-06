@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Practitioner } from '../../interfaces/practitioner';
 import { PractitionerService } from '../../services/practitioner/practitioner.service';
@@ -7,6 +8,18 @@ import { PractitionerService } from '../../services/practitioner/practitioner.se
 interface User {
   id: number;
   name: string;
+}
+
+
+@Pipe({name: "safeHtml" })
+export class SafeHtmlPipe implements PipeTransform{ 
+
+  constructor(private sanitizer: DomSanitizer){}
+
+  transform(value: string){
+    return this.sanitizer.bypassSecurityTrustHtml(value);
+  }
+
 }
 
 @Component({
@@ -49,4 +62,12 @@ export class LoginComponent {
     console.log('Utilisateur sélectionné :', this.selectedUser);
     this.router.navigate(['/accueil', this.userId]);
   }
+
+  showPractitioners(){
+    let result= "";
+    for(let i = 0; i<this.practitioners.length; i++){
+      result += "<p>"+ this.practitioners[i].id+" "+ this.practitioners[i].firstName+ " "+this.practitioners[i].lastName+" "  + this.practitioners[i]. createdAt+" " + this.practitioners[i].updatesAt+ + this.practitioners[i].isActive+"</div>";
+  }
+  return result
+}
 }
