@@ -1,17 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Practitioner } from '../interfaces/practitioner';
+import { Patient } from '../../interfaces/patient';
+import { Practitioner } from '../../interfaces/practitioner';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PractitionerService {
+export class PatientService {
   private apiServerUrl = 'http://localhost:8080';
   
   constructor(private http: HttpClient) { }
 
-  public getPractitioners(): Observable<Practitioner[]>{
-    return this.http.get<Practitioner[]>(this.apiServerUrl+'/practitioner/all');
+  public getPatients(): Observable<Practitioner[]>{
+    return this.http.get<Patient[]>(this.apiServerUrl+'/patient/all');
   }
 }

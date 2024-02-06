@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Practitioner } from '../../interfaces/practitioner';
-import { PractitionerService } from '../../services/practitioner.service';
+import { PractitionerService } from '../../services/practitioner/practitioner.service';
 
 interface User {
   id: number;

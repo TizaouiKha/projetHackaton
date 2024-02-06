@@ -1,4 +1,4 @@
-package com.example.projetHackatonBack;
+package com.example.projetHackatonBack.controller;
 
 import java.util.List;
 

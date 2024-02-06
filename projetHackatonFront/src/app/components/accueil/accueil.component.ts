@@ -3,7 +3,7 @@ import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Practitioner } from '../../interfaces/practitioner';
-import { PractitionerService } from '../../services/practitioner.service';
+import { PatientService } from '../../services/patient/patient.service';
 
 @Pipe({name: "safeHtml" })
 export class SafeHtmlPipe implements PipeTransform{ 
@@ -26,7 +26,7 @@ export class AccueilComponent implements OnInit{
   practitioners: Practitioner[] = [];
   
 
-  constructor(private router: Router, private route: ActivatedRoute, private practitionerService: PractitionerService) {}
+  constructor(private router: Router, private route: ActivatedRoute, private patientService: PatientService) {}
 
   ngOnInit(): void {
     this.getPractitioners();
@@ -48,7 +48,7 @@ export class AccueilComponent implements OnInit{
  
   
   public getPractitioners(): void{
-    this.practitionerService.getPractitioners().subscribe(
+    this.patientService.getPatients().subscribe(
       (response: Practitioner[]) => {
         this.practitioners = response;
       },
@@ -61,7 +61,7 @@ export class AccueilComponent implements OnInit{
   showPracticioners(){
     let result= "";
     for(let i = 0; i<this.practitioners.length; i++){
-      result += "<p>"+ this.practitioners[i].id+" "+ this.practitioners[i].firstName+ " "+this.practitioners[i].lastName+" "+ this.practitioners[i]. createdAt+" "+ this.practitioners[i].updatesAt+ " "+ this.practitioners[i].isActive+"</div>";
+      result += "<p>"+ this.practitioners[i].id+" "+ this.practitioners[i].firstName+ " "+this.practitioners[i].lastName+" " + this.practitioners[i]. createdAt+" " + this.practitioners[i].updatesAt+ + this.practitioners[i].isActive+"</div>";
   }
   return result
 }
