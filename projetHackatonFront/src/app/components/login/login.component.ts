@@ -54,13 +54,19 @@ export class LoginComponent {
     { id: 3, name: 'Utilisateur 3' }
   ];
 
-  selectedUser: number = 1;
-  userId = this.selectedUser;
+  selectedUser: any = null;
+  idUser: any = null;
 
   login() {
     // Vous pouvez implémenter la logique de connexion ici, par exemple, naviguer vers une nouvelle page
     console.log('Utilisateur sélectionné :', this.selectedUser);
-    this.router.navigate(['/accueil', this.userId]);
+    this.router.navigate(['/accueil', this.selectedUser.id]);
+  }
+
+  onUserChange() {
+    // Mettre à jour la variable en fonction du choix de la liste déroulante
+    this.idUser = this.selectedUser.id;
+    console.log('Variable remplie :', this.idUser);
   }
 
   showPractitioners(){

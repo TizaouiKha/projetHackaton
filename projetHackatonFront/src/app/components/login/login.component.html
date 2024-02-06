@@ -1,9 +1,11 @@
 <div>
     <h2>Connexion</h2>
-    <label for="userSelect">Choisir un utilisateur : </label>
-    <select id="userSelect">
-      <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
-    </select>
+    <form>
+      <label for="userSelect">Choisir un utilisateur : </label>
+      <select id="userSelect" name="userSelect" [(ngModel)]="selectedUser" (change)="onUserChange()">
+        <option *ngFor="let practitioner of practitioners" [ngValue]="practitioner">{{ practitioner.firstName }}</option>
+      </select>
+    </form>
     <button (click)="login()">Se connecter</button>
     <div [innerHTML]="showPractitioners() | safeHtml"></div>
 </div>
