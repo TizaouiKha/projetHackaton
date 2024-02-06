@@ -69,11 +69,5 @@ export class LoginComponent {
     console.log('Variable remplie :', this.idUser);
   }
 
-  showPractitioners(){
-    let result= "";
-    for(let i = 0; i<this.practitioners.length; i++){
-      result += "<p>"+ this.practitioners[i].id+" "+ this.practitioners[i].firstName+ " "+this.practitioners[i].lastName+" "  + this.practitioners[i]. createdAt+" " + this.practitioners[i].updatesAt+ + this.practitioners[i].isActive+"</div>";
-  }
-  return result
-}
+  
 }
