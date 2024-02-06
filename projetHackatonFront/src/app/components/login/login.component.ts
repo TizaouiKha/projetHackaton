@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Practitioner } from '../../interfaces/practitioner';
 import { PractitionerService } from '../../services/practitioner.service';
@@ -33,8 +33,6 @@ export class LoginComponent {
 
   ngOnInit(): void {
     let listePractitioners = this.getPractitioners();
-    // console.log('LISTE : ');
-    // console.log(listePractitioners);
   }
 
   users: User[] = [

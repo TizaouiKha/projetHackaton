@@ -1,9 +1,20 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Practitioner } from '../../interfaces/practitioner';
 import { PractitionerService } from '../../services/practitioner.service';
-import { ActivatedRoute } from '@angular/router';
+
+@Pipe({name: "safeHtml" })
+export class SafeHtmlPipe implements PipeTransform{ 
+
+  constructor(private sanitizer: DomSanitizer){}
+
+  transform(value: string){
+    return this.sanitizer.bypassSecurityTrustHtml(value);
+  }
+
+}
 
 @Component({
   selector: 'app-accueil',
@@ -12,7 +23,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class AccueilComponent implements OnInit{
-  practitioners!: Practitioner[];
+  practitioners: Practitioner[] = [];
   
 
   constructor(private router: Router, private route: ActivatedRoute, private practitionerService: PractitionerService) {}
@@ -33,6 +44,8 @@ export class AccueilComponent implements OnInit{
     // Rediriger vers la page de connexion
     this.router.navigate(['/login']);
   }
+
+ 
   
   public getPractitioners(): void{
     this.practitionerService.getPractitioners().subscribe(
@@ -44,4 +57,12 @@ export class AccueilComponent implements OnInit{
       }
     )
   }
+
+  showPracticioners(){
+    let result= "";
+    for(let i = 0; i<this.practitioners.length; i++){
+      result += "<p>"+ this.practitioners[i].id+" "+ this.practitioners[i].firstName+ " "+this.practitioners[i].lastName+" "+ this.practitioners[i]. createdAt+" "+ this.practitioners[i].updatesAt+ " "+ this.practitioners[i].isActive+"</div>";
+  }
+  return result
+}
 }

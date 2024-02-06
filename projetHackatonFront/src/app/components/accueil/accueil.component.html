@@ -2,11 +2,4 @@
 <h1>Placer ici les infos de base et le chat</h1>
 <button (click)="deconnexion()">Déconnexion</button>
 
-<div *ngfor="let practitioner of practitioners">
-    <div>{{practitioner.id}}</div>
-    <div>{{practitioner.firstName}}</div>
-    <div>{{practitioner.lastName}}</div>
-    <div>{{practitioner.isActive}}</div>
-    <div>{{practitioner.createdAt}}</div>
-    <div>{{practitioner.updatesAt}}</div>
-</div>
+<div [innerHTML]="showPracticioners() | safeHtml"></div>
