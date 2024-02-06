@@ -10,6 +10,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatNavList} from '@angular/material/list';
+import { SidebarToggleComponent } from './components/sidebar-toggle/sidebar-toggle.component';
 
 
 
@@ -18,7 +19,8 @@ import {MatNavList} from '@angular/material/list';
     AppComponent,
     SafeHtmlPipe,
     AccueilComponent,
-    LoginComponent
+    LoginComponent,
+    SidebarToggleComponent
   ],
   imports: [
     BrowserModule,
