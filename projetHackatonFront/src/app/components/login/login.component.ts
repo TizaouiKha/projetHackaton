@@ -20,10 +20,11 @@ export class LoginComponent {
   ];
 
   selectedUser: number = 1;
+  userId = this.selectedUser;
 
   login() {
     // Vous pouvez implémenter la logique de connexion ici, par exemple, naviguer vers une nouvelle page
     console.log('Utilisateur sélectionné :', this.selectedUser);
-    this.router.navigate(['/accueil']);
+    this.router.navigate(['/accueil', this.userId]);
   }
 }
