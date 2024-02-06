@@ -11,6 +11,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatNavList} from '@angular/material/list';
 import { SidebarToggleComponent } from './components/sidebar-toggle/sidebar-toggle.component';
+import {MatButtonModule} from '@angular/material/button';
 
 
 
@@ -31,6 +32,7 @@ import { SidebarToggleComponent } from './components/sidebar-toggle/sidebar-togg
     BrowserAnimationsModule,
     NoopAnimationsModule,
     MatNavList,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

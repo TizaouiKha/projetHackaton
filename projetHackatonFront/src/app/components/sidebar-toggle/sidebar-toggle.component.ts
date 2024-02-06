@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-sidebar-toggle',
   templateUrl: './sidebar-toggle.component.html',
