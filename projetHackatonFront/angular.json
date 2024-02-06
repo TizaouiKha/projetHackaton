@@ -3,11 +3,18 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "projetHackaton": {
+    "projetHackatonFront1": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
         }
       },
       "root": "",
@@ -17,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/projet-hackaton",
+            "outputPath": "dist/projet-hackaton-front1",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -32,12 +39,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -67,10 +69,13 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "projetHackaton:build:production"
+              "buildTarget": "projetHackatonFront1:build:production"
+            },
+            "options": {
+              "proxyConfig": "proxy.conf.json"
             },
             "development": {
-              "buildTarget": "projetHackaton:build:development"
+              "buildTarget": "projetHackatonFront1:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "projetHackaton:build"
+            "buildTarget": "projetHackatonFront1:build"
           }
         },
         "test": {
@@ -102,8 +107,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": false
   }
 }
