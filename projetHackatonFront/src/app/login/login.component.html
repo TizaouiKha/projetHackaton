@@ -1,0 +1,9 @@
+<div>
+    <h2>Connexion</h2>
+    <label for="userSelect">Choisir un utilisateur : </label>
+    <select id="userSelect">
+      <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+    </select>
+    <button (click)="login()">Se connecter</button>
+</div>
+  
