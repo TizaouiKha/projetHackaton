@@ -16,11 +16,7 @@
     "@angular/core": "^17.1.0",
     "@angular/forms": "^17.1.0",
     "@angular/material": "^17.1.2",
-<<<<<<< HEAD
-    "@angular/platform-browser": "^17.1.0",
-=======
     "@angular/platform-browser": "^17.1.2",
->>>>>>> Front-End-Oskar
     "@angular/platform-browser-dynamic": "^17.1.0",
     "@angular/router": "^17.1.0",
     "angular-animations": "^0.11.0",
