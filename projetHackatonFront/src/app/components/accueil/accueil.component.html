@@ -18,5 +18,17 @@
 </form>
 <button (click)="deconnexion()">Déconnexion</button>
 <div [innerHTML]="showPatients() | safeHtml"></div>
+
+<div name="infosPatient">
+    <div *ngFor="let patient of patients" [ngClass]="{ 'selected': patient.id === this.idPatient}">
+        <div *ngIf="this.idPatient === patient.id">
+            <div name="nomPrenom">{{ patient.firstName }} {{ patient.lastName }}</div>
+            <div name="email">Email du patient : {{ patient.email }}</div>
+            <div name="diabetesType">Type de diabete : {{ patient.diabetesType }}</div>
+            <div name="insulinScheme">Schéma d'insuline : {{ patient.insulinScheme }}</div>
+        </div>
+    </div>
+</div>
+
     </mat-sidenav-content>
 </mat-sidenav-container>
