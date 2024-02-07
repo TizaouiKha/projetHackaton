@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import net.sf.jsqlparser.expression.DateTimeLiteralExpression.DateTime;
 
@@ -12,6 +14,7 @@ public class Communication implements Serializable{
     
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Long id;
 
@@ -37,8 +40,7 @@ public class Communication implements Serializable{
     private String dateReceived;
 
 
-    public Communication(Long id, Long idCareTeam, Long isEntrePro,  Long idSender, String txtMsg, String fileMsg, DateTime dateSent, DateTime dateReceived){
-        this.id = id;
+    public Communication( Long idCareTeam, Long isEntrePro,  Long idSender, String txtMsg, String fileMsg, DateTime dateSent, DateTime dateReceived){
         this.idCareTeam = idCareTeam;
         this.isEntrePro = isEntrePro;
         this.idSender = idSender;

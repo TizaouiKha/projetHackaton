@@ -23,4 +23,8 @@ public class CommunicationService {
     public List<Communication> findCommunicationsByIdCareTeam(Long idCareTeam){
         return communicationInterface.findByIdCareTeam(idCareTeam);
     }
+
+    public Communication addCommunication(Communication communication){
+        return communicationInterface.save(communication);
+    }
 }
