@@ -25,7 +25,7 @@ export class SafeHtmlPipe implements PipeTransform{
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
   constructor(private router: Router, private practitionerService: PractitionerService) { }

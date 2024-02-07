@@ -4,7 +4,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Patient } from '../../interfaces/patient';
 import { PatientService } from '../../services/patient/patient.service';
-import {MatSidenavModule} from '@angular/material/sidenav';
 
 @Pipe({name: "safeHtml" })
 export class SafeHtmlPipe implements PipeTransform{ 
@@ -20,7 +19,7 @@ export class SafeHtmlPipe implements PipeTransform{
 @Component({
   selector: 'app-accueil',
   templateUrl: './accueil.component.html',
-  styleUrls: ['./accueil.component.css']
+  styleUrls: ['./accueil.component.scss']
 })
 
 export class AccueilComponent implements OnInit{
