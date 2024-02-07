@@ -8,15 +8,16 @@
     </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-        <p>accueil works!</p>
-<h1>Placer ici les infos de base et le chat</h1>
+
+<h1>Steto </h1>
 <form>
     <label for="userSelect">Choisir un patient : </label>
     <select id="userSelect" name="userSelect" [(ngModel)]="selectedPatient" (change)="onPatientChange()">
       <option *ngFor="let patient of patients" [ngValue]="patient">{{ patient.firstName }} {{ patient.lastName }}</option>
     </select>
 </form>
-<button (click)="deconnexion()">Déconnexion</button>
+<br>
+
 <div [innerHTML]="showPatients() | safeHtml"></div>
 
 <div name="infosPatient">
@@ -26,9 +27,13 @@
             <div name="email">Email du patient : {{ patient.email }}</div>
             <div name="diabetesType">Type de diabete : {{ patient.diabetesType }}</div>
             <div name="insulinScheme">Schéma d'insuline : {{ patient.insulinScheme }}</div>
+            <br>
+            <div name="chatById">Afficher à droite le chat avec la careTeam du patient selectionné dans la liste </div>
+            <br>
         </div>
     </div>
 </div>
+<button (click)="deconnexion()">Déconnexion</button>
 
     </mat-sidenav-content>
 </mat-sidenav-container>
