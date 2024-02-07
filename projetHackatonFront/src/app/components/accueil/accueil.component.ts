@@ -2,7 +2,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Communication } from '../../interfaces/communication';
 import { Patient } from '../../interfaces/patient';
+import { CommunicationService } from '../../services/communication/communication.service';
 import { PatientService } from '../../services/patient/patient.service';
 
 @Pipe({name: "safeHtml" })
@@ -24,9 +26,11 @@ export class SafeHtmlPipe implements PipeTransform{
 
 export class AccueilComponent implements OnInit{
   patients: Patient[] = [];
+  communications: Communication[]=[];
+  selectedPatient: any = null;
+  idPatient: any = null;
   
-
-  constructor(private router: Router, private route: ActivatedRoute, private patientService: PatientService) {}
+  constructor(private router: Router, private route: ActivatedRoute, private patientService: PatientService, private communicationService: CommunicationService) {}
 
   ngOnInit(): void {
     this.getPatients();
@@ -35,15 +39,14 @@ export class AccueilComponent implements OnInit{
       console.log('ID de l\'utilisateur:', userId);
 
     });
+    this.getCommunications();
   }
 
   deconnexion() {
     // Rediriger vers la page de connexion
     this.router.navigate(['/login']);
   }
-
  
-  
   public getPatients(): void{
     this.patientService.getPatients().subscribe(
       (response: Patient[]) => {
@@ -54,9 +57,18 @@ export class AccueilComponent implements OnInit{
       }
     )
   }
+  
 
-  selectedPatient: any = null;
-  idPatient: any = null;
+  public getCommunications(): void{
+    this.communicationService.getCommunications().subscribe(
+      (response: Communication[]) => {
+        this.communications = response;
+      },
+      (error:HttpErrorResponse)=>{
+        alert(error.message);
+      }
+    )
+  }
 
   onPatientChange() {
     // Mettre à jour la variable en fonction du choix de la liste déroulante
