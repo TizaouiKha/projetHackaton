@@ -3,7 +3,12 @@
     <form>
       <label for="userSelect">Choisir un utilisateur : </label>
       <select id="userSelect" name="userSelect" [(ngModel)]="selectedUser" (change)="onUserChange()">
-        <option *ngFor="let practitioner of practitioners" [ngValue]="practitioner">{{ practitioner.firstName }}</option>
+        <optgroup id="practitionersGroup" label="Les praticiens">
+          <option *ngFor="let practitioner of practitioners" [ngValue]="practitioner">{{ practitioner.firstName }}</option>
+        </optgroup>
+        <optgroup id="patientsGroup" label="Les patients : ">
+          <option *ngFor="let patient of patients" [ngValue]="patient">{{ patient.firstName }}</option>
+        </optgroup>
       </select>
     </form>
     <button (click)="login()">Se connecter</button>

@@ -4,6 +4,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Practitioner } from '../../interfaces/practitioner';
 import { PractitionerService } from '../../services/practitioner/practitioner.service';
+import { Patient } from '../../interfaces/patient';
+import { PatientService } from '../../services/patient/patient.service';
 
 interface User {
   id: number;
@@ -28,8 +30,9 @@ export class SafeHtmlPipe implements PipeTransform{
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor(private router: Router, private practitionerService: PractitionerService) { }
+  constructor(private router: Router, private practitionerService: PractitionerService, private patientService: PatientService) { }
   practitioners!: Practitioner[];
+  patients: Patient[] = [];
 
   public getPractitioners(): void{
     this.practitionerService.getPractitioners().subscribe(
@@ -44,8 +47,21 @@ export class LoginComponent {
     )
   }
 
+  public getPatients(): void{
+    this.patientService.getPatients().subscribe(
+      (response: Patient[]) => {
+        this.patients = response;
+        console.log(response);
+      },
+      (error:HttpErrorResponse)=>{
+        alert(error.message);
+      }
+    )
+  }
+
   ngOnInit(): void {
     let listePractitioners = this.getPractitioners();
+    let listePatients = this.getPatients();
   }
 
   users: User[] = [
