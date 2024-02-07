@@ -58,10 +58,20 @@ export class AccueilComponent implements OnInit{
     )
   }
 
+  selectedPatient: any = null;
+  idPatient: any = null;
+
+  onPatientChange() {
+    // Mettre à jour la variable en fonction du choix de la liste déroulante
+    this.idPatient = this.selectedPatient.id;
+    console.log('Patient sélectionné :', this.idPatient);
+    return this.idPatient;
+  }
+
   showPatients(){
     let result= "";
     for(let i = 0; i<this.patients.length; i++){
-      result += "<p>"+ this.patients[i].id+" "+ this.patients[i].firstName+ " "+this.patients[i].lastName+" " +" "+this.patients[i].email+" "+this.patients[i].insulinScheme+" "+this.patients[i].diabetesType+ " " + this.patients[i]. createdAt+" " + this.patients[i].updatesAt+ + this.patients[i].isActive+"</div>";
+      // result += "<p>"+ this.patients[i].id+" "+ this.patients[i].firstName+ " "+this.patients[i].lastName+" " +" "+this.patients[i].email+" "+this.patients[i].insulinScheme+" "+this.patients[i].diabetesType+ " " + this.patients[i]. createdAt+" " + this.patients[i].updatesAt+ + this.patients[i].isActive+"</div>";
   }
   return result
 }
