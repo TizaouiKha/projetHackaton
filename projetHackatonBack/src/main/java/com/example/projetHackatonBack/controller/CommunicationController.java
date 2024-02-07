@@ -32,10 +32,10 @@ public class CommunicationController {
         return new ResponseEntity<>(communications, HttpStatus.OK);
     }
     
-    @GetMapping("/find/{idCareTeam}/{idSubject}")
+    @GetMapping("/find/{idCareTeam}")
     public  ResponseEntity <List<Communication>> 
-    getCommunicationByIdCareTeam(@PathVariable("idCareTeam") Long idCareTeam, @PathVariable("idSubject") Long idSubject){
-        List<Communication> communications = communicationService.findCommunicationsByIdCareTeamAndIdSubject(idCareTeam, idSubject);
+    getCommunicationByIdCareTeam(@PathVariable("idCareTeam") Long idCareTeam){
+        List<Communication> communications = communicationService.findCommunicationsByIdCareTeam(idCareTeam);
         return new ResponseEntity<>(communications, HttpStatus.OK);
     }
     }

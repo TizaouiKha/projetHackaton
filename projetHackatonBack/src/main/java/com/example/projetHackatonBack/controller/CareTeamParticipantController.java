@@ -33,8 +33,7 @@ public class CareTeamParticipantController {
     }
     
     @GetMapping("/find/{id}")
-    public  ResponseEntity <CareTeamParticipant> 
-    getCareTeamParticipantByIdCareTeam(@PathVariable("id") Long id){
+    public  ResponseEntity <CareTeamParticipant> getCareTeamParticipantByIdCareTeam(@PathVariable("id") Long id){
        CareTeamParticipant careTeamParticipant = careTeamParticipantService.findCareTeamByIdPractitioner(id);
         return new ResponseEntity<>(careTeamParticipant, HttpStatus.OK);
     }

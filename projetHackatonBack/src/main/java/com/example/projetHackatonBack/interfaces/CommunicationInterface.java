@@ -8,7 +8,7 @@ import com.example.projetHackatonBack.model.Communication;
 
 public interface CommunicationInterface  extends JpaRepository<Communication, Long>{
 
-    List<Communication> findByIdCareTeamAndIdSubject(Long idCareTeam, Long idSubject);
+    List<Communication> findByIdCareTeam(Long idCareTeam);
     
 
 }

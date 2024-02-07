@@ -20,7 +20,7 @@ public class CommunicationService {
     public List<Communication> findAllCommunications(){
         return communicationInterface.findAll();
     }
-    public List<Communication> findCommunicationsByIdCareTeamAndIdSubject(Long idCareTeam, Long idSubject){
-        return communicationInterface.findByIdCareTeamAndIdSubject(idCareTeam, idSubject);
+    public List<Communication> findCommunicationsByIdCareTeam(Long idCareTeam){
+        return communicationInterface.findByIdCareTeam(idCareTeam);
     }
 }
