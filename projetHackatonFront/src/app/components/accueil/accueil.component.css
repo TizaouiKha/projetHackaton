@@ -1,22 +1,86 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* Empêche le défilement au niveau du body si ce n'est pas nécessaire */
+}
+
+mat-sidenav-container, mat-sidenav {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Assurez-vous qu'ils prennent toute la hauteur */
+}
+
 .example-container {
-    width: 500px;
-    height: 300px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    float: right;
-  }
-  
-  .example-sidenav-content {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .example-sidenav {
-    padding: 20px;
-  }
-  .matSideToggle {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
+  flex: 1;
+  max-width: 300px; /* ou utilisez une largeur relative si nécessaire */
+  width: 100%; /* ceci permet de s'adapter à la largeur de mat-sidenav */
+  overflow: auto;
+}
+
+
+.matSideToggle {
+  float: right;
+  margin-right: 10px;
+  border: 3px solid rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+}
+.message-container {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.message-container label {
+  font-weight: bold;
+}
+
+.example-container select,
+.example-container textarea {
+  width: calc(100% - 20px); /* calcule la largeur en soustrayant la padding totale */
+  box-sizing: border-box;
+  margin: 8px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.message-container .notification-toggle {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.message-container .notification-toggle input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.message-container button.send-message {
+  background-color: #6200ea;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  margin-top: 16px;
+  cursor: pointer;
+}
+.example-container select,
+.example-container textarea {
+  width: 100%; /* Ceci assure que les éléments ne dépassent pas leur conteneur */
+  box-sizing: border-box; /* Inclut la padding et la bordure dans la largeur de l'élément */
+  margin: 8px 0; /* Ajoute un peu d'espace en haut et en bas des éléments */
+  padding: 10px; /* Ajoute une padding intérieure pour les éléments */
+  border: 1px solid #ccc; /* Donne une bordure subtile */
+  border-radius: 4px; /* Arrondit les coins */
+}
+.example-container .message-container {
+  position: static; /* ou retirez cette règle si .message-container n'est pas à l'intérieur de .example-container */
+  width: calc(100% - 20px); /* ajustez la largeur pour compter pour le padding */
+  box-sizing: border-box;
+  padding: 16px;
+  margin-bottom: 16px; /* Ajoutez de l'espace en bas si nécessaire */
+}
