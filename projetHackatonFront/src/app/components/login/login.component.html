@@ -1,11 +1,24 @@
-<div>
-    <h2>Connexion</h2>
-    <form>
-      <label for="userSelect">Choisir un utilisateur : </label>
-      <select id="userSelect" name="userSelect" [(ngModel)]="selectedUser" (change)="onUserChange()">
-        <option *ngFor="let practitioner of practitioners" [ngValue]="practitioner">{{ practitioner.firstName }}</option>
-      </select>
-    </form>
-    <button (click)="login()">Se connecter</button>
-</div>
+<div style="text-align:center">
+    <h3>Connexion</h3>
+    <mat-card class="example-card">
+      <mat-card-title>Connexion</mat-card-title>
+
+    <mat-form-field>
+      <mat-label>Nom médecin</mat-label>
+      <mat-select class="myFilter" id="userSelect" name="userSelect" [(ngModel)]="selectedUser" (change)="onUserChange()">
+        <mat-option></mat-option>
+        @for (option of practitioners; track option) {
+          <mat-option [value]="option">{{ option.firstName }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
   
+    <button mat-raised-button color="accent" (click)="login()">Se connecter</button>
+    <style>
+      button{
+        display: block;
+        margin: auto;
+      }
+    </style>
+    </mat-card>
+</div>
