@@ -59,6 +59,15 @@ export class AccueilComponent implements OnInit{
     )
   }
 
+  selectedPatient: any = null;
+  idPatient: any = null;
+
+  onPatientChange() {
+    // Mettre à jour la variable en fonction du choix de la liste déroulante
+    this.idPatient = this.selectedPatient.id;
+    console.log('Patient sélectionné :', this.idPatient);
+  }
+
   showPatients(){
     let result= "";
     for(let i = 0; i<this.patients.length; i++){

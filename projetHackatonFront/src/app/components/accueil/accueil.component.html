@@ -10,6 +10,12 @@
     <mat-sidenav-content>
         <p>accueil works!</p>
 <h1>Placer ici les infos de base et le chat</h1>
+<form>
+    <label for="userSelect">Choisir un patient : </label>
+    <select id="userSelect" name="userSelect" [(ngModel)]="selectedPatient" (change)="onPatientChange()">
+      <option *ngFor="let patient of patients" [ngValue]="patient">{{ patient.firstName }} {{ patient.lastName }}</option>
+    </select>
+</form>
 <button (click)="deconnexion()">Déconnexion</button>
 <div [innerHTML]="showPatients() | safeHtml"></div>
     </mat-sidenav-content>
