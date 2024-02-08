@@ -29,6 +29,7 @@ export class AccueilComponent implements OnInit{
   communications: Communication[]=[];
   selectedPatient: any = null;
   idPatient: any = null;
+  isPractitioner: any = 1;
   
   constructor(private router: Router, private route: ActivatedRoute, private patientService: PatientService, private communicationService: CommunicationService) {}
 
@@ -36,7 +37,12 @@ export class AccueilComponent implements OnInit{
     this.getPatients();
     this.route.params.subscribe(params => {
       const userId = params['userId'];
+      this.isPractitioner = params['isPractitioner'];
       console.log('ID de l\'utilisateur:', userId);
+      if(this.isPractitioner == 1) {
+        console.log('Cest un isPractitioner');
+      }
+      return this.isPractitioner;
 
     });
     this.getCommunicationsByCareTeamId(10);

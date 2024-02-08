@@ -10,12 +10,14 @@
     <mat-sidenav-content>
 
 <h1>Steto </h1>
-<form>
-    <label for="userSelect">Choisir un patient : </label>
-    <select id="userSelect" name="userSelect" [(ngModel)]="selectedPatient" (change)="onPatientChange()">
-      <option *ngFor="let patient of patients" [ngValue]="patient">{{ patient.firstName }} {{ patient.lastName }}</option>
-    </select>
-</form>
+<div *ngIf="isPractitioner==1">
+    <form>
+        <label for="userSelect">Choisir un patient : </label>
+        <select id="userSelect" name="userSelect" [(ngModel)]="selectedPatient" (change)="onPatientChange()">
+        <option *ngFor="let patient of patients" [ngValue]="patient">{{ patient.firstName }} {{ patient.lastName }}</option>
+        </select>
+    </form>
+</div>
 <br>
 
 <div [innerHTML]="showPatients() | safeHtml"></div>
