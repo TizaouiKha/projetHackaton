@@ -72,11 +72,17 @@ export class LoginComponent {
 
   selectedUser: any = null;
   idUser: any = null;
+  isPractitioner: any = 0;
 
   login() {
     // Vous pouvez implémenter la logique de connexion ici, par exemple, naviguer vers une nouvelle page
     console.log('Utilisateur sélectionné :', this.selectedUser);
-    this.router.navigate(['/accueil', this.selectedUser.id]);
+    const isPractitioner = 0;
+    if(!('diabetesType' in this.selectedUser)) {
+      console.log("C'est un practitioner ");
+      this.isPractitioner = 1;
+    }
+    this.router.navigate(['/accueil', this.selectedUser.id, this.isPractitioner]);
   }
 
   onUserChange() {
