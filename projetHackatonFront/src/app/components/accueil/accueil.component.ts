@@ -59,17 +59,10 @@ export class AccueilComponent implements OnInit{
       this.userId = params['userId'];
       this.isPractitioner = params['isPractitioner'];
       console.log('ID de l\'utilisateur:',this.userId);
-      if(this.isPractitioner == 1) {
-        console.log('Cest un isPractitioner');
-        this.getCareTeamBySubjectId(this.selectedPatient.id);
-        console.log(this.careTeam);
-      }
-      else{
-        this.getCareTeamBySubjectId(this.userId);
-      }
       return this.isPractitioner;
 
     });
+    this.showMessages();
   }
 
   deconnexion() {
@@ -148,16 +141,7 @@ export class AccueilComponent implements OnInit{
   showMessages(){
     this.messages = [];
     let msg = {};
-    if(this.isPractitioner==1){
-      this.getCareTeamBySubjectId(this.selectedPatient.id);
-      this.getCareTeamBySubjectId(this.selectedPatient.id);
-    }
-    else{
-      this.getCareTeamBySubjectId(this.userId);
-      this.getCareTeamBySubjectId(this.userId);
-    }
-    this.getCommunicationsByCareTeamId(this.careTeam?.id);
-    this.getCommunicationsByCareTeamId(this.careTeam?.id);
+    this.getCommunicationsByCareTeamId(10);
     let  nameUser: any;
     nameUser = "test";
     for(let i = 0; i<this.communications.length; i++){
