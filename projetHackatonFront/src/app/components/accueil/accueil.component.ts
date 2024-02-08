@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Input, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { careTeam } from '../../interfaces/careTeam';
@@ -32,7 +32,7 @@ export class AccueilComponent implements OnInit{
   selectedPatient: any = null;
   idPatient: any = null;
   isPractitioner: any = 1;
-  @Input() careTeam!: careTeam;
+  careTeam: careTeam ;
   
   constructor(private router: Router, private route: ActivatedRoute, private patientService: PatientService, private communicationService: CommunicationService, private careTeamService: CareTeamService) {
     this.careTeam;
@@ -51,7 +51,6 @@ export class AccueilComponent implements OnInit{
 
     });
     this.getCareTeamBySubjectId(1);
-    console.log(this.careTeam);
     this.getCommunicationsByCareTeamId(10);
   }
 
@@ -87,6 +86,7 @@ export class AccueilComponent implements OnInit{
     this.careTeamService.getCareTeamBySubjectId(idSubject).subscribe(
       (response: careTeam) => {
         this.careTeam = response;
+        console.log(this.careTeam);
       },
       (error:HttpErrorResponse)=>{
         alert(error.message);
