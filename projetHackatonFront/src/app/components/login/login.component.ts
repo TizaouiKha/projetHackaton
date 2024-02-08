@@ -2,14 +2,15 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { Practitioner } from '../../interfaces/practitioner';
-import { PractitionerService } from '../../services/practitioner/practitioner.service';
 import { Patient } from '../../interfaces/patient';
+import { Practitioner } from '../../interfaces/practitioner';
 import { PatientService } from '../../services/patient/patient.service';
+import { PractitionerService } from '../../services/practitioner/practitioner.service';
 
 interface User {
   id: number;
   name: string;
+  type: string;
 }
 
 
@@ -63,12 +64,6 @@ export class LoginComponent {
     let listePractitioners = this.getPractitioners();
     let listePatients = this.getPatients();
   }
-
-  users: User[] = [
-    { id: 1, name: 'Utilisateur 1' },
-    { id: 2, name: 'Utilisateur 2' },
-    { id: 3, name: 'Utilisateur 3' }
-  ];
 
   selectedUser: any = null;
   idUser: any = null;

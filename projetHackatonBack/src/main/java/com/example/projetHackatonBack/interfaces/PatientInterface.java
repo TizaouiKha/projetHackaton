@@ -9,5 +9,5 @@ import com.example.projetHackatonBack.model.Patient;
 
 public interface PatientInterface  extends JpaRepository<Patient, Long>{
     
-    Optional<Patient> findPatientById(Long subjectId);
+    Optional<Patient> findById(Long id);
 }

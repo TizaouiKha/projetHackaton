@@ -22,6 +22,6 @@ public class PatientService {
         return patientInterface.findAll();
     }
     public Patient findPatientById(Long id){
-        return patientInterface.findPatientById(id).orElseThrow(()-> new UserNotFoundException("Patient by id "+ id));
+        return patientInterface.findById(id).orElseThrow(()-> new UserNotFoundException("Patient by id "+ id));
     }
 }

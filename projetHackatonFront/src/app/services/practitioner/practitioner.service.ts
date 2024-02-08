@@ -14,4 +14,8 @@ export class PractitionerService {
   public getPractitioners(): Observable<Practitioner[]>{
     return this.http.get<Practitioner[]>(this.apiServerUrl+'/practitioner/all');
   }
+
+  public getPractitionerById(id: Number): Observable<Practitioner>{
+    return this.http.get<Practitioner>(this.apiServerUrl+'/practitioner/find/'+id);
+  }
 }

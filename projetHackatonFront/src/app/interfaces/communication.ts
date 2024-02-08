@@ -1,7 +1,7 @@
 export interface Communication{
     id: number;
     idCareTeam: number;
-    isEntrePro: boolean;
+    isEntrePro: Number;
     idSender: number;
     textMsg: String;
     fileMsg: String;

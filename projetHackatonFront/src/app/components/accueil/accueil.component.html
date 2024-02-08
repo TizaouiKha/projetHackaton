@@ -32,11 +32,20 @@
                     <option value="everyone">Tout le monde</option>
                     <!-- Ajoutez d'autres options ici -->
                 </select>
-                <textarea></textarea>
-                <div class="notification-toggle">
-                    <mat-slide-toggle id="notify-pros" color="primary">Avec notification aux pros</mat-slide-toggle>
-                    <button type="submit" class="send-message">Envoyer</button>
-                </div>
+                <form #addForm="ngForm" (ngSubmit)="onAddCommunication(addForm)">
+                    <input [ngModel]="10" type="hidden" name="idCareTeam" [value]="10">
+                    <input [ngModel]="userId" type="hidden" name="idSender" [value]="userId">
+                    <input [ngModel]="1" type="hidden" name="isEntrePro" [value]="1">
+                    <input [ngModel]="null" type="hidden" name="fileMsg" [value]="null">
+                    <input [ngModel]="this.time" type="hidden" name="dateSent" [value]="this.time">
+                    <input [ngModel]="this.time" type="hidden" name="dateReceived" [value]="this.time">
+                    <input [ngModel]="'test'" type="text" name="textMsg" required>
+                    <div class="notification-toggle">
+                        <mat-slide-toggle id="notify-pros" color="primary">Avec notification aux pros</mat-slide-toggle>
+                        <button type="submit" class="send-message">Envoyer</button>
+                    </div>
+                </form>
+                
             </div>
         </div>
     </mat-sidenav>
@@ -44,7 +53,6 @@
           <p>accueil works!</p>
           <h1>Placer ici les infos de base et le chat</h1>
           <button (click)="deconnexion()">Déconnexion</button>
-          <div [innerHTML]="showPatients() | safeHtml"></div>
           <h1>Steto </h1>
 <div *ngIf="isPractitioner==1">
     <form>
@@ -67,27 +75,5 @@
                 </div>
             </div>
         </div>
-        
-        <div name="communications">
-            <div *ngFor="let communication of communications">
-                    <div name="id">id msg: {{ communication.id }}</div>
-                    <div name="idCareTeam">id CareTeam : {{ communication.idCareTeam }}</div>
-                    <div name="isEntrePro">isEntrePro : {{ communication.isEntrePro }}</div>
-                    <div name="idSender">idSender : {{ communication.idSender }}</div>    
-                    <div name="txtMsg">message : {{ communication.textMsg }}</div>
-                    <div name="fileMsg">fileMsg : {{ communication.fileMsg }}</div>
-                    <div name="dateSent">dateSent : {{ communication.dateSent }}</div>
-                    <div name="dateReceived">dateReceived : {{ communication.dateReceived }}</div>
-                    <br>
-                </div>
-            </div>
-        
       </mat-sidenav-content>
   </mat-sidenav-container>
-
-
-
-<br>
-
-<div [innerHTML]="showPatients() | safeHtml"></div>
-

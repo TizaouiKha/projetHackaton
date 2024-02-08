@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,10 +31,10 @@ public class PractitionerController {
         return new ResponseEntity<>(practitioners, HttpStatus.OK);
     }
     
-    // @GetMapping("/findByCareTeamPractitionerId/{idCareTeamPractitioner}")
-    //  public  ResponseEntity <Practitioner> findPractitionerByCareTeamParticipantId(Long id){
-    //     Practitioner practitioner = practitionerService.findPractitionerByCareTeamParticipantId(id);
-    //     return new ResponseEntity<>(practitioner, HttpStatus.OK);
-    // }
+    @GetMapping("/find/{id}")
+    public  ResponseEntity <Practitioner> getPractitionerById(@PathVariable("id") Long id){
+       Practitioner practitioner = practitionerService.findPractitionerById(id);
+        return new ResponseEntity<>(practitioner, HttpStatus.OK);
+    }
     
 }

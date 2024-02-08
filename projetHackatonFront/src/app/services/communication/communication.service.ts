@@ -14,7 +14,12 @@ export class CommunicationService {
   public getCommunications(): Observable<Communication[]>{
     return this.http.get<Communication[]>(this.apiServerUrl+'/communication/all');
   }
+
   public getCommunicationsByCareTeamId(idCareTeam: number): Observable<Communication[]>{
     return this.http.get<Communication[]>(this.apiServerUrl+'/communication/find/'+idCareTeam);
+  }
+
+  public addCommunication(communication: Communication): Observable<Communication>{
+    return this.http.post<Communication>(this.apiServerUrl+'/communication/add', communication);
   }
 }
