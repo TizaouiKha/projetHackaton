@@ -8,6 +8,5 @@ import com.example.projetHackatonBack.model.CareTeamParticipant;
 public interface CareTeamParticipantInterface  extends JpaRepository<CareTeamParticipant, Long>{
 
     CareTeamParticipant  findByMemberId(Long memberId);
-    
 
 }

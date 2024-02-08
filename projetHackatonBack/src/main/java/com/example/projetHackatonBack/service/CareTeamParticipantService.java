@@ -20,7 +20,7 @@ public class CareTeamParticipantService {
     public List<CareTeamParticipant> findAllCareTeamParticipants(){
         return careTeamParticipantInterface.findAll();
     }
-    public CareTeamParticipant findCareTeamByIdPractitioner(Long id){
+    public CareTeamParticipant findCareTeamParticipantByIdPractitioner(Long id){
         return careTeamParticipantInterface.findByMemberId(id);
     }
 }

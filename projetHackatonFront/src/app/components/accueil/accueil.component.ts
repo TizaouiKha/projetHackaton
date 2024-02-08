@@ -1,9 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { Component, Input, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { careTeam } from '../../interfaces/careTeam';
 import { Communication } from '../../interfaces/communication';
 import { Patient } from '../../interfaces/patient';
+import { CareTeamService } from '../../services/careTeam/care-team.service';
 import { CommunicationService } from '../../services/communication/communication.service';
 import { PatientService } from '../../services/patient/patient.service';
 
@@ -30,8 +32,11 @@ export class AccueilComponent implements OnInit{
   selectedPatient: any = null;
   idPatient: any = null;
   isPractitioner: any = 1;
+  @Input() careTeam!: careTeam;
   
-  constructor(private router: Router, private route: ActivatedRoute, private patientService: PatientService, private communicationService: CommunicationService) {}
+  constructor(private router: Router, private route: ActivatedRoute, private patientService: PatientService, private communicationService: CommunicationService, private careTeamService: CareTeamService) {
+    this.careTeam;
+  }
 
   ngOnInit(): void {
     this.getPatients();
@@ -45,6 +50,8 @@ export class AccueilComponent implements OnInit{
       return this.isPractitioner;
 
     });
+    this.getCareTeamBySubjectId(1);
+    console.log(this.careTeam);
     this.getCommunicationsByCareTeamId(10);
   }
 
@@ -69,6 +76,17 @@ export class AccueilComponent implements OnInit{
     this.communicationService.getCommunicationsByCareTeamId(idCareTeam).subscribe(
       (response: Communication[]) => {
         this.communications = response;
+      },
+      (error:HttpErrorResponse)=>{
+        alert(error.message);
+      }
+    )
+  }
+
+  public getCareTeamBySubjectId(idSubject: number): void{
+    this.careTeamService.getCareTeamBySubjectId(idSubject).subscribe(
+      (response: careTeam) => {
+        this.careTeam = response;
       },
       (error:HttpErrorResponse)=>{
         alert(error.message);

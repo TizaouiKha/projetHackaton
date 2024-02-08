@@ -9,6 +9,6 @@ public interface CareTeamInterface  extends JpaRepository<CareTeam, Long>{
 
     CareTeam findBySubjectId(Long subjectId);
     
-    CareTeam findCareTeamById(Long subjectId);
+    CareTeam findCareTeamById(Long id);
     
 }
