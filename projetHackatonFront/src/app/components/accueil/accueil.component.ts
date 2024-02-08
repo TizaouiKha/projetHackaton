@@ -39,7 +39,7 @@ export class AccueilComponent implements OnInit{
       console.log('ID de l\'utilisateur:', userId);
 
     });
-    this.getCommunications();
+    this.getCommunicationsByCareTeamId(10);
   }
 
   deconnexion() {
@@ -59,8 +59,8 @@ export class AccueilComponent implements OnInit{
   }
   
 
-  public getCommunications(): void{
-    this.communicationService.getCommunications().subscribe(
+  public getCommunicationsByCareTeamId(idCareTeam: number): void{
+    this.communicationService.getCommunicationsByCareTeamId(idCareTeam).subscribe(
       (response: Communication[]) => {
         this.communications = response;
       },

@@ -33,6 +33,20 @@
         </div>
     </div>
 </div>
+
+<div name="communications">
+    <div *ngFor="let communication of communications">
+            <div name="id">id msg: {{ communication.id }}</div>
+            <div name="idCareTeam">id CareTeam : {{ communication.idCareTeam }}</div>
+            <div name="isEntrePro">isEntrePro : {{ communication.isEntrePro }}</div>
+            <div name="idSender">idSender : {{ communication.idSender }}</div>    
+            <div name="txtMsg">message : {{ communication.textMsg }}</div>
+            <div name="fileMsg">fileMsg : {{ communication.fileMsg }}</div>
+            <div name="dateSent">dateSent : {{ communication.dateSent }}</div>
+            <div name="dateReceived">dateReceived : {{ communication.dateReceived }}</div>
+            <br>
+        </div>
+    </div>
 <button (click)="deconnexion()">Déconnexion</button>
 
     </mat-sidenav-content>
