@@ -1,11 +1,47 @@
-<app-sidebar-toggle  (click)="sideNav.toggle()" class="matSideToggle"></app-sidebar-toggle>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<app-sidebar-toggle (click)="sideNav.toggle()" class="matSideToggle"></app-sidebar-toggle>
 <mat-sidenav-container>
-    <mat-sidenav #sideNav mode="side" [class.mat-elevation-z4]>
-    <mat-nav-list>
-        <a mat-list-item>
-            test
-        </a>
-    </mat-nav-list>
+    <mat-sidenav #sideNav mode="side" position="end" [class.mat-elevation-z4]>
+        <div class="example-container">
+            <div class="button-group">
+                <button class="top-button" id="allButton">Tous</button>
+                <button class="top-button" id="proButton">Entre Pro</button>
+            </div>
+            <div class="date-line">
+                <span class="date-text">Lundi 21 novembre 2023</span>
+              </div>
+            <div class="chat-container">
+                <!-- Bulle de message du docteur -->
+                <div class="chat-message doctor">
+                  <div class="chat-bubble">
+                    <p class="chat-text">Bonjour M Croizat, comme discuté à l'instant au téléphone, vous pouvez passer à 6U d'insuline rapide le soir avant le diner.</p>
+                    <p class="chat-timestamp">09:23</p>
+                  </div>
+                </div>
+              
+                <!-- Bulle de message du patient -->
+                <div class="chat-message patient">
+                  <div class="chat-bubble">
+                    <p class="chat-name">Gauthier Croizat</p>
+                    <p class="chat-text">C'est bien noté merci</p>
+                    <p class="chat-timestamp">13:31</p>
+                  </div>
+                </div>
+              </div>
+            
+            <div class="message-container">
+              <label for="recipient">Destinataire : </label>
+              <select id="recipient">
+                  <option value="everyone">Tout le monde</option>
+                  <!-- Ajoutez d'autres options ici -->
+              </select>
+              <textarea></textarea>
+              <div class="notification-toggle">
+                <mat-slide-toggle id="notify-pros" color="primary">Avec notification aux pros</mat-slide-toggle>
+                <button type="submit" class="send-message">Envoyer</button>
+            </div>
+          </div>
+        </div>
     </mat-sidenav>
     <mat-sidenav-content>
 
