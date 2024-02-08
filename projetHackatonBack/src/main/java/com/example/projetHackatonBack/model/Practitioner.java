@@ -15,6 +15,8 @@ public class Practitioner implements Serializable{
     @Column(name="id")
     private Long id;
 
+    private Long careTeamId;
+
     @Column(name="firstname")
     private String firstName;
 

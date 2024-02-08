@@ -2,9 +2,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Communication } from '../../interfaces/communication';
 import { Patient } from '../../interfaces/patient';
+import { CommunicationService } from '../../services/communication/communication.service';
 import { PatientService } from '../../services/patient/patient.service';
-import {MatSidenavModule} from '@angular/material/sidenav';
 
 @Pipe({name: "safeHtml" })
 export class SafeHtmlPipe implements PipeTransform{ 
@@ -20,34 +21,32 @@ export class SafeHtmlPipe implements PipeTransform{
 @Component({
   selector: 'app-accueil',
   templateUrl: './accueil.component.html',
-  styleUrls: ['./accueil.component.css']
+  styleUrls: ['./accueil.component.scss']
 })
 
 export class AccueilComponent implements OnInit{
   patients: Patient[] = [];
+  communications: Communication[]=[];
+  selectedPatient: any = null;
+  idPatient: any = null;
   
-
-  constructor(private router: Router, private route: ActivatedRoute, private patientService: PatientService) {}
+  constructor(private router: Router, private route: ActivatedRoute, private patientService: PatientService, private communicationService: CommunicationService) {}
 
   ngOnInit(): void {
     this.getPatients();
     this.route.params.subscribe(params => {
       const userId = params['userId'];
       console.log('ID de l\'utilisateur:', userId);
-      // Utilisez l'ID de l'utilisateur comme vous le souhaitez dans votre page de connexion
+
     });
+    this.getCommunications();
   }
 
   deconnexion() {
-    // Effectuer les actions de déconnexion
-    // Par exemple, vider le localStorage, supprimer les cookies, etc.
-
     // Rediriger vers la page de connexion
     this.router.navigate(['/login']);
   }
-
  
-  
   public getPatients(): void{
     this.patientService.getPatients().subscribe(
       (response: Patient[]) => {
@@ -58,11 +57,30 @@ export class AccueilComponent implements OnInit{
       }
     )
   }
+  
+
+  public getCommunications(): void{
+    this.communicationService.getCommunications().subscribe(
+      (response: Communication[]) => {
+        this.communications = response;
+      },
+      (error:HttpErrorResponse)=>{
+        alert(error.message);
+      }
+    )
+  }
+
+  onPatientChange() {
+    // Mettre à jour la variable en fonction du choix de la liste déroulante
+    this.idPatient = this.selectedPatient.id;
+    console.log('Patient sélectionné :', this.idPatient);
+    return this.idPatient;
+  }
 
   showPatients(){
     let result= "";
     for(let i = 0; i<this.patients.length; i++){
-      result += "<p>"+ this.patients[i].id+" "+ this.patients[i].firstName+ " "+this.patients[i].lastName+" " +" "+this.patients[i].email+" "+this.patients[i].insulinScheme+" "+this.patients[i].diabetesType+ " " + this.patients[i]. createdAt+" " + this.patients[i].updatesAt+ + this.patients[i].isActive+"</div>";
+      // result += "<p>"+ this.patients[i].id+" "+ this.patients[i].firstName+ " "+this.patients[i].lastName+" " +" "+this.patients[i].email+" "+this.patients[i].insulinScheme+" "+this.patients[i].diabetesType+ " " + this.patients[i]. createdAt+" " + this.patients[i].updatesAt+ + this.patients[i].isActive+"</div>";
   }
   return result
 }
