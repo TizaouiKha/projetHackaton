@@ -10,7 +10,7 @@
             </div>
             <!-- Affichage des messages filtrés -->
             <div class="chat-container">
-                <div *ngFor="let message of messages" [ngClass]="{'hidden': !showAllMessages && message.type !== 1 || showAllMessages && message.type ==1}">
+                <div *ngFor="let message of messages" [ngClass]="{'hidden':  message.type==1 && isPractitioner==0 || !showAllMessages && message.type==null && isPractitioner==1 }">
                     <div class="chat-message" [ngClass]="{'pro':isPractitioner==1, 'patient':  isPractitioner==0}">
                         <div class="chat-bubble">
                             <p *ngIf="message.name" class="chat-name">{{message.name}}</p>
@@ -64,7 +64,7 @@
 <div *ngIf="isPractitioner==1">
     <form>
         <label for="userSelect">Choisir un patient : </label>
-        <select id="userSelect" name="userSelect" [(ngModel)]="selectedPatient" (select)="onPatientChange()" (change)="onPatientChange()" [selectedIndex]="1">
+        <select id="userSelect" name="userSelect" [(ngModel)]="selectedPatient" (change)="onPatientChange()" [selectedIndex]="1">
         <option *ngFor="let patient of patients; let i = index" [ngValue]="patient" [attr.selected]='i==0 ? "selected" : true'>{{ patient.firstName }} {{ patient.lastName }}</option>
         </select>
     </form>
