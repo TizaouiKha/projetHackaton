@@ -5,6 +5,6 @@ export interface Communication{
     idSender: number;
     textMsg: String;
     fileMsg: String;
-    dateSent: String;
-    dateReceived: String;
+    dateSent: Date;
+    dateReceived: Date;
 }

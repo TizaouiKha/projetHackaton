@@ -45,6 +45,7 @@ export class AccueilComponent implements OnInit{
   time: any;
   practitioner: Practitioner;
   patient: Patient;
+  sidebarOuvert: boolean = false;
   
   constructor(private router: Router, private route: ActivatedRoute, private practitionerService: PractitionerService, private patientService: PatientService, private communicationService: CommunicationService, private careTeamService: CareTeamService) {
   }
@@ -149,10 +150,13 @@ export class AccueilComponent implements OnInit{
     let msg = {};
     if(this.isPractitioner==1){
       this.getCareTeamBySubjectId(this.selectedPatient.id);
+      this.getCareTeamBySubjectId(this.selectedPatient.id);
     }
     else{
       this.getCareTeamBySubjectId(this.userId);
+      this.getCareTeamBySubjectId(this.userId);
     }
+    this.getCommunicationsByCareTeamId(this.careTeam?.id);
     this.getCommunicationsByCareTeamId(this.careTeam?.id);
     let  nameUser: any;
     nameUser = "test";
