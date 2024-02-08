@@ -1,0 +1,260 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+  mat-sidenav-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    border: none;
+  }
+  mat-sidenav {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: none;
+  }
+  
+  .example-container {
+    flex: 1;
+    max-width: 500px;
+    width: 100%; 
+    border: 1px solid #ccc;
+    box-shadow: 10px rgba(0,0,0,0.5);
+    border-radius: 4px;
+    overflow: auto;
+    
+  }
+  .example-container * { /* Le sélecteur * cible tous les éléments enfants de .example-container */
+   
+    /* ou center center selon le point autour duquel vous voulez qu'ils rétrécissent */
+  }
+  
+  .matSideToggle {
+    float: right;
+    margin-right: 10px;
+    border: 3px solid rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+  }
+  .message-container {
+    position: absolute; /* Positionnement par rapport au sidenav */
+    bottom: 0; /* Fixé en bas */
+    left: 0; /* Aligné à gauche */
+    width: 100%; /* Prend toute la largeur disponible */
+    background: #fff;
+    border-radius: 20px;
+    padding: 16px;
+    box-sizing: border-box;
+    z-index: 10; 
+    border: 1.5px solid #ccc;
+    margin-left: 10px;
+    position: fixed;
+    bottom: 0;
+  }
+  
+  
+  
+  .example-container textarea {
+    width: 100%; 
+    box-sizing: border-box;
+    margin-top: 8px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .message-container .notification-toggle {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+  }
+  
+  
+  .message-container button.send-message {
+    background-color: #6200ea;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    margin-top: 16px;
+    cursor: pointer;
+  }
+  
+  .example-container textarea {
+    width: 100%; /* Ceci assure que les éléments ne dépassent pas leur conteneur */
+    box-sizing: border-box; /* Inclut la padding et la bordure dans la largeur de l'élément */
+    margin: 8px 0; /* Ajoute un peu d'espace en haut et en bas des éléments */
+    padding: 10px; /* Ajoute une padding intérieure pour les éléments */
+    border-radius: 4px; /* Arrondit les coins */
+    resize: none;
+    border: none;
+  }
+  .message-container {
+    position: static; 
+    width: calc(100% - 20px); 
+    box-sizing: border-box;
+    padding: 16px;
+    margin-bottom: 16px; 
+    bottom: 0;
+  }
+  .example-container select {
+    width: 30%;
+    box-sizing: border-box;
+    margin-top: 8px;
+    padding: 5px;
+    background-color: rgb(218, 214, 228);
+    border-radius: 50px;
+    border: none;
+  }
+  label[for="recipient"] {
+    font-family: 'Roboto', sans-serif;
+  }
+  .chat-container {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .chat-message {
+    margin-bottom: 10px;
+    width: 80%; /* Ajustez la largeur selon vos besoins */
+    margin-left: 10px;
+  }
+  
+  .chat-message.doctor .chat-bubble {
+    background-color: #e0ffe0; /* Couleur de fond pour le docteur */
+    color: #333;
+    margin-left: auto;
+    margin-right: 0;
+  }
+  
+  .chat-message.patient .chat-bubble {
+    background-color: #e0e0ff; /* Couleur de fond pour le patient */
+    color: #333;
+    margin-right: auto;
+    margin-left: 0;
+  }
+  
+  .chat-bubble {
+    border-radius: 15px;
+    padding: 10px 15px;
+    position: relative;
+    display: inline-block;
+    max-width: 70%; /* Ajustez la largeur maximale selon vos besoins */
+    word-wrap: break-word;
+    text-align: left;
+    
+  }
+  
+  .chat-name {
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .chat-timestamp {
+    margin: 0;
+    font-size: 0.75rem;
+    text-align: right;
+  }
+  
+  /* Alignez les bulles du docteur à gauche et celles du patient à droite */
+  .chat-message.doctor {
+    text-align: right;
+  }
+  
+  .chat-message.patient {
+    text-align: left;
+  }
+  .date-line {
+    border-top: 1px solid #ccc; /* Ligne horizontale */
+    position: relative; /* Permet de positionner la date absolument par rapport à cette ligne */
+    margin: 20px 0; /* Espace au-dessus et en dessous de la ligne */
+  }
+  
+  .date-text {
+    position: absolute; /* Positionne la date par rapport à sa ligne parent */
+    top: -12px; /* Ajustez en fonction de la taille de la police pour centrer verticalement par rapport à la ligne */
+    left: 10%; /* Position à 20% du bord gauche */
+    background: #fff; /* Fond blanc pour cacher la ligne derrière le texte */
+    padding: 0 10px; /* Espace autour du texte */
+    font-family: 'Roboto', sans-serif; /* Utilise la police Roboto */
+    font-size: 1rem; /* Taille de police standard */
+    color: #333; /* Couleur du texte */
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: start;
+    padding: 10px;
+    background-color: #ffffff; /* Fond blanc pour tout le groupe de boutons */
+    
+  }
+  
+  .top-button {
+    background-color: #ffffff; /* Fond blanc pour les boutons */
+    color: #000;
+    padding: 8px 20px; /* Padding ajusté pour que les boutons soient plus ronds */
+    margin-right: 8px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    border-radius: 20px; /* Bordure bien arrondie */
+    outline: none;
+    transition: background-color 0.3s;
+    border: none; /* Enlever les bordures */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Ajouter une légère ombre pour le relief */
+  }
+  
+  .top-button.active, .top-button:hover {
+    background-color: #acacff;
+    color: #fff;
+  }
+  
+  /* Met en évidence le bouton actif avec une couleur différente */
+  #allButton.active {
+    background-color: #acacff;
+    color: #fff;
+  }
+  
+  #proButton.active {
+    background-color: #acacff;
+    color: #fff;
+  }
+  .pro-chat-container {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .chat-message.pro .chat-bubble {
+    background-color: #e0e0ff; /* Choisissez une couleur de fond différente pour Entre Pro */
+    color: #333;
+    margin-left: auto;
+    margin-right: 0;
+  }
+  .chat-message.vincent .chat-bubble {
+    background-color: #e0ffe0; /* Couleur de fond pour Vincent, similaire au docteur */
+    color: #333;
+    text-align: left;
+  }
+  .chat-message.vincent {
+    display: flex;
+    justify-content: end;
+  }
+  .timestamp-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .pro-tag {
+    background-color: #1d5da2; /* Bleu */
+    color: #FFFFFF; /* Blanc */
+    font-size: 0.75rem; /* Petite taille de texte */
+    padding: 2px 6px; /* Petit padding */
+    border-radius: 4px; /* Coins arrondis */
+    margin-left: 8px; /* Espacement entre le timestamp et le tag */
+    white-space: nowrap; /* Empêche le texte de passer à la ligne */
+  }
+  .hidden {
+    display: none;
+  }
+  
