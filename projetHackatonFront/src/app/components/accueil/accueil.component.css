@@ -44,7 +44,7 @@ mat-sidenav {
   left: 0; /* Aligné à gauche */
   width: 100%; /* Prend toute la largeur disponible */
   background: #fff;
-  border-radius: 8px;
+  border-radius: 20px;
   padding: 16px;
   box-sizing: border-box;
   z-index: 10; 
@@ -142,7 +142,6 @@ label[for="recipient"] {
   display: inline-block;
   max-width: 70%; /* Ajustez la largeur maximale selon vos besoins */
   word-wrap: break-word;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   text-align: left;
   
 }
@@ -175,7 +174,7 @@ label[for="recipient"] {
 .date-text {
   position: absolute; /* Positionne la date par rapport à sa ligne parent */
   top: -12px; /* Ajustez en fonction de la taille de la police pour centrer verticalement par rapport à la ligne */
-  left: 20%; /* Position à 20% du bord gauche */
+  left: 10%; /* Position à 20% du bord gauche */
   background: #fff; /* Fond blanc pour cacher la ligne derrière le texte */
   padding: 0 10px; /* Espace autour du texte */
   font-family: 'Roboto', sans-serif; /* Utilise la police Roboto */
@@ -207,17 +206,18 @@ label[for="recipient"] {
 }
 
 .top-button.active, .top-button:hover {
-  background-color: #add8e6; /* Changement de couleur au survol */
+  background-color: #acacff;
+  color: #fff;
 }
 
 /* Met en évidence le bouton actif avec une couleur différente */
 #allButton.active {
-  background-color: #6200ea;
+  background-color: #acacff;
   color: #fff;
 }
 
 #proButton.active {
-  background-color: #6200ea;
+  background-color: #acacff;
   color: #fff;
 }
 .pro-chat-container {
@@ -253,4 +253,7 @@ label[for="recipient"] {
   border-radius: 4px; /* Coins arrondis */
   margin-left: 8px; /* Espacement entre le timestamp et le tag */
   white-space: nowrap; /* Empêche le texte de passer à la ligne */
+}
+.hidden {
+  display: none;
 }

@@ -66,4 +66,16 @@ export class AccueilComponent implements OnInit{
   }
   return result
 }
+
+  messages = [
+    { content: "Qu'en pensez-vous ?", type: "pro", timestamp: "8:30", name: "Vincent" },
+    { content: "Bonjour Vincent, ok pour moi", type: "pro", timestamp: "17:48", name: "Dr Clémentine Belle Grenier" },
+    { content: "Bonjour M Croizat, comme discuté à l'instant au téléphone, vous pouvez passer à 6U d'insuline rapide le soir avant le diner.", type: "doctor", timestamp: "09:23" },
+    { content: "C'est bien noté merci", type: "patient", timestamp: "13:31", name: "Gauthier Croizat" }
+  ];
+  showAllMessages: boolean = true;
+
+  toggleMessages(showProOnly: boolean): void {
+    this.showAllMessages = !showProOnly;
+  }
 }
