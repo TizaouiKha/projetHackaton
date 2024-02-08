@@ -37,7 +37,7 @@ export class AccueilComponent implements OnInit{
   selectedPatient: any = null;
   idPatient: any = null;
   isPractitioner: any;
-  careTeam: careTeam ;
+  careTeam: any ;
   messages : any[]=[];
   showAllMessages: boolean = true;
   userId:any;
@@ -60,6 +60,11 @@ export class AccueilComponent implements OnInit{
       console.log('ID de l\'utilisateur:',this.userId);
       if(this.isPractitioner == 1) {
         console.log('Cest un isPractitioner');
+        this.getCareTeamBySubjectId(this.selectedPatient.id);
+        console.log(this.careTeam);
+      }
+      else{
+        this.getCareTeamBySubjectId(this.userId);
       }
       return this.isPractitioner;
 
@@ -98,6 +103,7 @@ export class AccueilComponent implements OnInit{
     this.careTeamService.getCareTeamBySubjectId(idSubject).subscribe(
       (response: careTeam) => {
         this.careTeam = response;
+        console.log(this.careTeam);
       },
       (error:HttpErrorResponse)=>{
         alert(error.message);
@@ -131,17 +137,26 @@ export class AccueilComponent implements OnInit{
     // Mettre à jour la variable en fonction du choix de la liste déroulante
     this.idPatient = this.selectedPatient.id;
     console.log('Patient sélectionné :', this.idPatient);
+    if(this.isPractitioner == 1) {
+      console.log('Cest un isPractitioner');
+      this.getCareTeamBySubjectId(this.selectedPatient.id);
+    }
     return this.idPatient;
   }
 
   showMessages(){
     this.messages = [];
     let msg = {};
-    this.getCareTeamBySubjectId(1);
-    this.getCommunicationsByCareTeamId(10);
+    if(this.isPractitioner==1){
+      this.getCareTeamBySubjectId(this.selectedPatient.id);
+    }
+    else{
+      this.getCareTeamBySubjectId(this.userId);
+    }
+    this.getCommunicationsByCareTeamId(this.careTeam?.id);
     let  nameUser: any;
+    nameUser = "test";
     for(let i = 0; i<this.communications.length; i++){
-    nameUser=" ";
       if(this.communications[i].isEntrePro==null){
         this.getPatientById(this.communications[i].idSender);
         nameUser = this.patient?.firstName +" " + this.patient?.lastName;
@@ -169,7 +184,6 @@ export class AccueilComponent implements OnInit{
         alert(error.message);
       }
     )
-    this.getCommunicationsByCareTeamId(10);
     this.showMessages();
     console.log(this.messages);
   }
