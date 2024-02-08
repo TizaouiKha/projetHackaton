@@ -45,27 +45,7 @@
           <h1>Placer ici les infos de base et le chat</h1>
           <button (click)="deconnexion()">Déconnexion</button>
           <div [innerHTML]="showPatients() | safeHtml"></div>
-      </mat-sidenav-content>
-  </mat-sidenav-container>
-
-            
-            <div class="message-container">
-              <label for="recipient">Destinataire : </label>
-              <select id="recipient">
-                  <option value="everyone">Tout le monde</option>
-                  <!-- Ajoutez d'autres options ici -->
-              </select>
-              <textarea></textarea>
-              <div class="notification-toggle">
-                <mat-slide-toggle id="notify-pros" color="primary">Avec notification aux pros</mat-slide-toggle>
-                <button type="submit" class="send-message">Envoyer</button>
-            </div>
-          </div>
-        </div>
-    </mat-sidenav>
-    <mat-sidenav-content>
-
-<h1>Steto </h1>
+          <h1>Steto </h1>
 <div *ngIf="isPractitioner==1">
     <form>
         <label for="userSelect">Choisir un patient : </label>
@@ -74,38 +54,40 @@
         </select>
     </form>
 </div>
+          <div name="infosPatient">
+            <div *ngFor="let patient of patients" [ngClass]="{ 'selected': patient.id === this.idPatient}">
+                <div *ngIf="this.idPatient === patient.id">
+                    <div name="nomPrenom">{{ patient.firstName }} {{ patient.lastName }}</div>
+                    <div name="email">Email du patient : {{ patient.email }}</div>
+                    <div name="diabetesType">Type de diabete : {{ patient.diabetesType }}</div>
+                    <div name="insulinScheme">Schéma d'insuline : {{ patient.insulinScheme }}</div>
+                    <br>
+                    <div name="chatById">Afficher à droite le chat avec la careTeam du patient selectionné dans la liste </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+        
+        <div name="communications">
+            <div *ngFor="let communication of communications">
+                    <div name="id">id msg: {{ communication.id }}</div>
+                    <div name="idCareTeam">id CareTeam : {{ communication.idCareTeam }}</div>
+                    <div name="isEntrePro">isEntrePro : {{ communication.isEntrePro }}</div>
+                    <div name="idSender">idSender : {{ communication.idSender }}</div>    
+                    <div name="txtMsg">message : {{ communication.textMsg }}</div>
+                    <div name="fileMsg">fileMsg : {{ communication.fileMsg }}</div>
+                    <div name="dateSent">dateSent : {{ communication.dateSent }}</div>
+                    <div name="dateReceived">dateReceived : {{ communication.dateReceived }}</div>
+                    <br>
+                </div>
+            </div>
+        
+      </mat-sidenav-content>
+  </mat-sidenav-container>
+
+
+
 <br>
 
 <div [innerHTML]="showPatients() | safeHtml"></div>
 
-<div name="infosPatient">
-    <div *ngFor="let patient of patients" [ngClass]="{ 'selected': patient.id === this.idPatient}">
-        <div *ngIf="this.idPatient === patient.id">
-            <div name="nomPrenom">{{ patient.firstName }} {{ patient.lastName }}</div>
-            <div name="email">Email du patient : {{ patient.email }}</div>
-            <div name="diabetesType">Type de diabete : {{ patient.diabetesType }}</div>
-            <div name="insulinScheme">Schéma d'insuline : {{ patient.insulinScheme }}</div>
-            <br>
-            <div name="chatById">Afficher à droite le chat avec la careTeam du patient selectionné dans la liste </div>
-            <br>
-        </div>
-    </div>
-</div>
-
-<div name="communications">
-    <div *ngFor="let communication of communications">
-            <div name="id">id msg: {{ communication.id }}</div>
-            <div name="idCareTeam">id CareTeam : {{ communication.idCareTeam }}</div>
-            <div name="isEntrePro">isEntrePro : {{ communication.isEntrePro }}</div>
-            <div name="idSender">idSender : {{ communication.idSender }}</div>    
-            <div name="txtMsg">message : {{ communication.textMsg }}</div>
-            <div name="fileMsg">fileMsg : {{ communication.fileMsg }}</div>
-            <div name="dateSent">dateSent : {{ communication.dateSent }}</div>
-            <div name="dateReceived">dateReceived : {{ communication.dateReceived }}</div>
-            <br>
-        </div>
-    </div>
-<button (click)="deconnexion()">Déconnexion</button>
-
-    </mat-sidenav-content>
-</mat-sidenav-container>
