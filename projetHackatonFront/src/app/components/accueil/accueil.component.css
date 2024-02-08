@@ -28,8 +28,8 @@ mat-sidenav {
   
 }
 .example-container * { /* Le sélecteur * cible tous les éléments enfants de .example-container */
-  transform: scale(0.9);
-  transform-origin: top left; /* ou center center selon le point autour duquel vous voulez qu'ils rétrécissent */
+ 
+  /* ou center center selon le point autour duquel vous voulez qu'ils rétrécissent */
 }
 
 .matSideToggle {
@@ -219,4 +219,38 @@ label[for="recipient"] {
 #proButton.active {
   background-color: #6200ea;
   color: #fff;
+}
+.pro-chat-container {
+  font-family: 'Roboto', sans-serif;
+}
+
+.chat-message.pro .chat-bubble {
+  background-color: #e0e0ff; /* Choisissez une couleur de fond différente pour Entre Pro */
+  color: #333;
+  margin-left: auto;
+  margin-right: 0;
+}
+.chat-message.vincent .chat-bubble {
+  background-color: #e0ffe0; /* Couleur de fond pour Vincent, similaire au docteur */
+  color: #333;
+  text-align: left;
+}
+.chat-message.vincent {
+  display: flex;
+  justify-content: end;
+}
+.timestamp-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.pro-tag {
+  background-color: #1d5da2; /* Bleu */
+  color: #FFFFFF; /* Blanc */
+  font-size: 0.75rem; /* Petite taille de texte */
+  padding: 2px 6px; /* Petit padding */
+  border-radius: 4px; /* Coins arrondis */
+  margin-left: 8px; /* Espacement entre le timestamp et le tag */
+  white-space: nowrap; /* Empêche le texte de passer à la ligne */
 }
