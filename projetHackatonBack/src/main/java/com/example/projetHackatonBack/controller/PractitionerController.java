@@ -30,4 +30,10 @@ public class PractitionerController {
         return new ResponseEntity<>(practitioners, HttpStatus.OK);
     }
     
+    // @GetMapping("/findByCareTeamPractitionerId/{idCareTeamPractitioner}")
+    //  public  ResponseEntity <Practitioner> findPractitionerByCareTeamParticipantId(Long id){
+    //     Practitioner practitioner = practitionerService.findPractitionerByCareTeamParticipantId(id);
+    //     return new ResponseEntity<>(practitioner, HttpStatus.OK);
+    // }
+    
 }

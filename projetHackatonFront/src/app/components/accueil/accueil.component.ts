@@ -33,6 +33,8 @@ export class AccueilComponent implements OnInit{
   idPatient: any = null;
   isPractitioner: any = 1;
   careTeam: careTeam ;
+  messages : any[]=[];
+  showAllMessages: boolean = true;
   
   constructor(private router: Router, private route: ActivatedRoute, private patientService: PatientService, private communicationService: CommunicationService, private careTeamService: CareTeamService) {
     this.careTeam;
@@ -108,14 +110,20 @@ export class AccueilComponent implements OnInit{
   }
   return result
 }
+  showMessages(){
+    let msg :{};
+    for(let i = 0; i<this.communications.length; i++){
+      msg = {
+        content: this.communications[i].textMsg,
+        type: this.communications[i].isEntrePro,
+        timestamp: this.communications[i].dateReceived,
+        name: this.communications[i].idSender,
+      }
+      this.messages.push(msg);
+    }
+  }
 
-  messages = [
-    { content: "Qu'en pensez-vous ?", type: "pro", timestamp: "8:30", name: "Vincent" },
-    { content: "Bonjour Vincent, ok pour moi", type: "pro", timestamp: "17:48", name: "Dr Clémentine Belle Grenier" },
-    { content: "Bonjour M Croizat, comme discuté à l'instant au téléphone, vous pouvez passer à 6U d'insuline rapide le soir avant le diner.", type: "doctor", timestamp: "09:23" },
-    { content: "C'est bien noté merci", type: "patient", timestamp: "13:31", name: "Gauthier Croizat" }
-  ];
-  showAllMessages: boolean = true;
+  
 
   toggleMessages(showProOnly: boolean): void {
     this.showAllMessages = !showProOnly;

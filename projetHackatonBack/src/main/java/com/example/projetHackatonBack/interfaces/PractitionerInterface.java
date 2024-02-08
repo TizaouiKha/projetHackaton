@@ -6,5 +6,6 @@ import com.example.projetHackatonBack.model.Practitioner;
 
 public interface PractitionerInterface  extends JpaRepository<Practitioner, Long>{
     
+    // Optional<Practitioner> findPractitionerByCareTeamPractitionerId(Long careTeamPractitionerId);
 
 }

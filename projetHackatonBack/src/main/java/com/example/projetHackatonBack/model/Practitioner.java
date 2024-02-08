@@ -29,10 +29,8 @@ public class Practitioner implements Serializable{
 
     @Column(name="updatesAt")
     private String updatesAt;
-
-
+    
     public Practitioner(Long id, String firstName, String lastName, boolean isActive,DateTime createdAt, DateTime updatesAt){
-        
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

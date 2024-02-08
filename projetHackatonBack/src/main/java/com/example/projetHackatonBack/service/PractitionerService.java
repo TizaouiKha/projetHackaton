@@ -20,4 +20,8 @@ public class PractitionerService {
     public List<Practitioner> findAllPractitioners(){
         return practitionerInterface.findAll();
     }
+
+    // public Practitioner findPractitionerByCareTeamParticipantId(Long id){
+    //     return practitionerInterface.findPractitionerByCareTeamPractitionerId(id).orElseThrow(()-> new UserNotFoundException("Patient by id "+ id));
+    // }
 }
