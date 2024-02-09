@@ -11,7 +11,7 @@
       
       <mat-select class="mySelect" id="userSelect" name="userSelect" [(ngModel)]="selectedUser" (change)="onUserChange()">
         <mat-option></mat-option>
-
+        <mat-label>Nom Practitioner</mat-label>
         @for (option of practitioners; track option) {
           <mat-option [value]="option">{{ option.firstName }}</mat-option>
         }

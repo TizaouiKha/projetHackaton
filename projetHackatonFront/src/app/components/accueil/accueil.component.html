@@ -58,7 +58,7 @@
     </mat-sidenav>
       <mat-sidenav-content>
         <h1 class="titre">Steto </h1>
-          <div class="vl"></div>
+          <div *ngIf="isPractitioner==1">
               <label class="selectUser" for="userSelect">Choisir un patient : </label>
               <select class="patientChoose" id="userSelect" name="userSelect" [(ngModel)]="selectedPatient" (change)="onPatientChange()">
                 <option *ngFor="let patient of patients" [ngValue]="patient">{{ patient.firstName }} {{ patient.lastName }}</option>
@@ -88,10 +88,10 @@
                   </div>
                 
           </div>
-    
+        </div>
+        </div>
           
           <button mat-raised-button color="primary" class="decoButton" (click)="deconnexion()">Déconnexion</button>
-          </div>
     
           
           
