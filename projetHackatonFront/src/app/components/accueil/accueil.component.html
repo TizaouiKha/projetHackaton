@@ -1,41 +1,45 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-
-<div class="vl"></div>
-
-<h1 class="titre">Steto </h1>
-    <label class="patientChoose" for="userSelect">Choisir un patient : </label>
-    <select class="selectUser" id="userSelect" name="userSelect" [(ngModel)]="selectedPatient" (change)="onPatientChange()">
-      <option *ngFor="let
-    patient of patients" [ngValue]="patient">{{ patient.firstName }} {{ patient.lastName }}</option>
-    </select>
-<br>
-<select class="mySelect" id="userSelect" name="userSelect" [(ngModel)]="selectedPatient" (change)="onPatientChange()">
-    <mat-option></mat-option>
-
-    <mat-label>Nom patient</mat-label>
-    @for (option of patients; track option) {
-      <mat-option [value]="option">{{ option.firstName }}</mat-option>
-    }
-  <select>
-
-<div [innerHTML]="showPatients() | safeHtml"></div>
-
-<div name="infosPatient">
-    <div *ngFor="let patient of patients" [ngClass]="{ 'selected': patient.id === this.idPatient}">
-        <div *ngIf="this.idPatient === patient.id">
-            <div class="nom-prenom" name="nomPrenom">{{ patient.firstName }} {{ patient.lastName }}</div>
-            <div name="email">Email du patient : {{ patient.email }}</div>
-            <div name="diabetesType">Type de diabete : {{ patient.diabetesType }}</div>
-            <div name="insulinScheme">Schéma d'insuline : {{ patient.insulinScheme }}</div>
-            <br>
-            <div name="chatById">Afficher à droite le chat avec la careTeam du patient selectionné dans la liste </div>
-            <br>
-        </div>
-    </div>
-</div>
 <div>
-<button mat-raised-button class="decoButton" (click)="deconnexion()">Déconnexion</button>
+<h1 class="titre">Steto </h1>
 </div>
+      <div class="vl"></div>
+          <label class="selectUser" for="userSelect">Choisir un patient : </label>
+          <select class="patientChoose" id="userSelect" name="userSelect" [(ngModel)]="selectedPatient" (change)="onPatientChange()">
+            <option *ngFor="let patient of patients" [ngValue]="patient">{{ patient.firstName }} {{ patient.lastName }}</option>
+          </select>
+      <br>
+      
+      <div [innerHTML]="showPatients() | safeHtml"></div>
+      
+      <div name="infosPatient">
+          <div *ngFor="let patient of patients" [ngClass]="{ 'selected': patient.id === this.idPatient}">
+              <div *ngIf="this.idPatient === patient.id">
+                  <mat-card class="example-card">
+                    <mat-card-header>
+                      <mat-card-subtitle><div class="nom" name="nomPrenom">{{ patient.firstName }} {{ patient.lastName }}</div>
+                      </mat-card-subtitle>
+                      <mat-card-title>
+                        <div class="diabete" name="diabetesType">Type de diabete : {{ patient.diabetesType }}</div>
+                      </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                    
+                        <div class="insuline" name="insulinScheme">Schéma d'insuline : {{ patient.insulinScheme }}</div>
+                      
+                    </mat-card-content>
+                    <mat-card-footer>
+                      <div class="email" name="email">Email du patient : {{ patient.email }}</div>
+                    </mat-card-footer>
+                  </mat-card>
+              </div>
+            
+      </div>
 
+      
+      <button mat-raised-button color="primary" class="decoButton" (click)="deconnexion()">Déconnexion</button>
+      </div>
+
+      
+      

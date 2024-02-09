@@ -1,14 +1,14 @@
 .vl {
-    border-left: 7px solid beige;
+    border-left: 3px solid beige;
     height: 1000px;
     position: absolute;
-    left: 20%;
+    left: 10%;
     margin-left: -3px;
     top: 0;
   }
   .patientChoose {
     position: absolute;
-    left: 22%;
+    left: 20%;
     top: 20%;
     font-family: "Roboto", sans-serif;
     font-weight: 700;
@@ -16,20 +16,52 @@
   }
 .selectUser{
     position: absolute;
-    left: 45%;
+    left: 10%;
     top: 20%;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
 }
 .decoButton{
   bottom: 0;
   margin: 0;
   position: absolute;
   top:95%;
-  left: 9%;
+  left: 5%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 .titre{
-  font-family: "Roboto", sans-serif;
-  font-weight: 700;
-  font-style: normal;
+    position:absolute;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    top: 1%;
+    right: 91%;
+    font-size: 58px;
 }
+.nom{
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+.example-card {
+    max-width: 400px;
+    left: 150px;
+    top: 140px;
+  }
+  .diabete{
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  .insuline{
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  .email{
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
