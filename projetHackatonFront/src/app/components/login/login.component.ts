@@ -81,7 +81,6 @@ export class LoginComponent {
   }
 
   onUserChange() {
-    // Mettre à jour la variable en fonction du choix de la liste déroulante
     this.idUser = this.selectedUser.id;
     console.log('Variable remplie :', this.idUser);
   }

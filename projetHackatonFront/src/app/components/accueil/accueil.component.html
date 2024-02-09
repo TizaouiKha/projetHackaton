@@ -57,30 +57,43 @@
         </div>
     </mat-sidenav>
       <mat-sidenav-content>
-          <p>accueil works!</p>
-          <h1>Placer ici les infos de base et le chat</h1>
-          <button (click)="deconnexion()">Déconnexion</button>
-          <h1>Steto </h1>
-<div *ngIf="isPractitioner==1">
-    <form>
-        <label for="userSelect">Choisir un patient : </label>
-        <select id="userSelect" name="userSelect" [(ngModel)]="selectedPatient" (change)="onPatientChange()" [selectedIndex]="1">
-        <option *ngFor="let patient of patients; let i = index" [ngValue]="patient" [attr.selected]='i==0 ? "selected" : true'>{{ patient.firstName }} {{ patient.lastName }}</option>
-        </select>
-    </form>
-</div>
+        <h1 class="titre">Steto </h1>
+          <div class="vl"></div>
+              <label class="selectUser" for="userSelect">Choisir un patient : </label>
+              <select class="patientChoose" id="userSelect" name="userSelect" [(ngModel)]="selectedPatient" (change)="onPatientChange()">
+                <option *ngFor="let patient of patients" [ngValue]="patient">{{ patient.firstName }} {{ patient.lastName }}</option>
+              </select>
+          <br>
+          
           <div name="infosPatient">
-            <div *ngFor="let patient of patients" [ngClass]="{ 'selected': patient.id === this.idPatient}">
-                <div *ngIf="this.idPatient === patient.id">
-                    <div name="nomPrenom">{{ patient.firstName }} {{ patient.lastName }}</div>
-                    <div name="email">Email du patient : {{ patient.email }}</div>
-                    <div name="diabetesType">Type de diabete : {{ patient.diabetesType }}</div>
-                    <div name="insulinScheme">Schéma d'insuline : {{ patient.insulinScheme }}</div>
-                    <br>
-                    <div name="chatById">Afficher à droite le chat avec la careTeam du patient selectionné dans la liste </div>
-                    <br>
-                </div>
-            </div>
-        </div>
+              <div *ngFor="let patient of patients" [ngClass]="{ 'selected': patient.id === this.idPatient}">
+                  <div *ngIf="this.idPatient === patient.id">
+                      <mat-card class="example-card">
+                        <mat-card-header>
+                          <mat-card-subtitle><div class="nom" name="nomPrenom">{{ patient.firstName }} {{ patient.lastName }}</div>
+                          </mat-card-subtitle>
+                          <mat-card-title>
+                            <div class="diabete" name="diabetesType">Type de diabete : {{ patient.diabetesType }}</div>
+                          </mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                        
+                            <div class="insuline" name="insulinScheme">Schéma d'insuline : {{ patient.insulinScheme }}</div>
+                          
+                        </mat-card-content>
+                        <mat-card-footer>
+                          <div class="email" name="email">Email du patient : {{ patient.email }}</div>
+                        </mat-card-footer>
+                      </mat-card>
+                  </div>
+                
+          </div>
+    
+          
+          <button mat-raised-button color="primary" class="decoButton" (click)="deconnexion()">Déconnexion</button>
+          </div>
+    
+          
+          
       </mat-sidenav-content>
   </mat-sidenav-container>
